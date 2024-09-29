@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de l'Auteur</title>
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Détails de l'Auteur</h1>
+        <img src="{{ asset(author.picture) }}" alt="Image de {{ author.username }}" width="150" height="150">
+        <h2>{{ author.username }}</h2>
+        <p>Email: {{ author.email }}</p>
+        <p>Nombre de livres: {{ author.nb_books }}</p>
+        <a href="{{ path('author_list') }}">Retour à la liste des auteurs</a>
+    </div>
+</body>
+</html>

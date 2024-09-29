@@ -1,0 +1,32 @@
+<h1>List of Authors</h1>
+<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% if Authors is not defined or Authors is empty %}
+    <h1>Aucun auteur n'est disponible</h1>
+{% else %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nom de l'auteur</th>
+                <th>Image</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in Authors %}
+                <tr>
+                    <td>{{ author.username | upper }}</td>
+                    <td><img src="{{ asset(author.picture) }}" alt="Image de {{ author.username }}" width="50" height="50"></td>
+                    <td><a href="{{ path('author_details', {'id': author.id}) }}">Détails</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Le nombre des auteurs est {{ Authors | length }}</h2>
+    
+    {% set total_livre = 0 %}
+    {% for author in Authors %}
+        {% set total_livre = total_livre + author.nb_books %}
+    {% endfor %}
+    <h2>Le nombre total des livres est {{ total_livre }}</h2>
+{% endif %}
